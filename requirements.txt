@@ -1,7 +1,13 @@
 asgiref==3.8.1
+autopep8==2.3.2
 Django==5.2
 django-extensions==3.2.3
+django-silk==5.3.2
 djangorestframework==3.16.0
+gprof2dot==2024.6.6
 pillow==11.1.0
+pycodestyle==2.13.0
+pydotplus==2.0.2
+pyparsing==3.2.3
 sqlparse==0.5.3
 tzdata==2025.2
