@@ -6,7 +6,6 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
-            'id',
             'name',
             'description',
             'price',
@@ -43,8 +42,9 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ('order_id', 'created_at', 'user', 'status', 'items', 'total_price')
 
+
 class ProductInfoSerializer(serializers.Serializer):
     # get all products, count and max price of product
     products = ProductSerializer(many=True)
-    count =  serializers.IntegerField()
+    count = serializers.IntegerField()
     max_price = serializers.FloatField()
