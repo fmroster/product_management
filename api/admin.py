@@ -11,9 +11,5 @@ class OrderAdmin(admin.ModelAdmin):
         OrderItemInline
     ]
 
-class UserAdmin(admin.ModelAdmin):
-    model = User
-
-
 admin.site.register(Order, OrderAdmin)
-admin.site.register(User, UserAdmin)
+admin.site.register(User)
