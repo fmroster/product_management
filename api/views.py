@@ -11,14 +11,6 @@ from rest_framework.permissions import (
 )
 from rest_framework.views import APIView
 
-
-# @api_view(['GET'])
-# def product_list(request):
-#     products = Product.objects.all()
-#     serializer = ProductSerializer(products, many=True)
-#
-#     return Response(serializer.data)
-
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     # filter.(stock__gt=0)
     queryset = Product.objects.all()
@@ -31,27 +23,17 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
         return super().get_permissions()
 
 
-# @api_view(['GET'])
-# def product_detail(request, pk):
-#     product = get_object_or_404(Product, pk=pk)
-#     serializer = ProductSerializer(product)
-#
-#     return Response(serializer.data)
-
 # automatically get the primary key out of the url
-class ProductDetailAPIView(generics.RetrieveAPIView):
+class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects
     serializer_class = ProductSerializer
     lookup_url_kwarg = 'product_id'
 
-
-# @api_view(['GET'])
-# def order_list(request):
-#     # optimize the backend by prefetching the orders, following form item to prodcut using foreign key
-#     orders = Order.objects.prefetch_related('items__product').all()
-#     serializer = OrderSerializer(orders, many=True)
-#
-#     return Response(serializer.data)
+    def get_permissions(self):
+        self.permission_classes = [AllowAny]
+        if self.request.method == ['PUT', 'PATCH', 'DELETE']:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
 
 
 class OrderListAPIView(generics.ListAPIView):
@@ -80,3 +62,35 @@ class ProductInfoAPIView(APIView):
         })
 
         return Response(serializer.data)
+
+
+
+
+
+
+
+
+
+
+# @api_view(['GET'])
+# def product_list(request):
+#     products = Product.objects.all()
+#     serializer = ProductSerializer(products, many=True)
+#
+#     return Response(serializer.data)
+
+
+
+# @api_view(['GET'])
+# def product_detail(request, pk):
+#     product = get_object_or_404(Product, pk=pk)
+#     serializer = ProductSerializer(product)
+#
+#     return Response(serializer.data)
+# @api_view(['GET'])
+# def order_list(request):
+#     # optimize the backend by prefetching the orders, following form item to prodcut using foreign key
+#     orders = Order.objects.prefetch_related('items__product').all()
+#     serializer = OrderSerializer(orders, many=True)
+#
+#     return Response(serializer.data)

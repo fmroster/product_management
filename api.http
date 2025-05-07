@@ -18,6 +18,26 @@ Content-Type: application/json
 GET http://localhost:8000/products/ HTTP/1.1
 
 ###
+GET http://localhost:8000/products/1/ HTTP/1.1
+
+###
+GET http://localhost:8000/products/1/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2NjQ4Mjg5LCJpYXQiOjE3NDY2NDc5ODksImp0aSI6ImIxMzIyM2FmNTQzNjRmNzRhNGExYmFmN2ZjZjI2NjM5IiwidXNlcl9pZCI6MX0.oZZkbxcIpMAnqSUXusqopL2CClCFelol4itcixxKygQ
+
+###
+POST http://localhost:8000/products/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2NjQ3OTU2LCJpYXQiOjE3NDY2NDc2NTYsImp0aSI6ImQzMzM2NTdkY2Q0MDRhNzBhZDIyN2RiMTYyZTE0ZDk5IiwidXNlcl9pZCI6MX0.wZkFA3LgbJDUiF0a2MSXjNZLRo4AQ7XnsUsDQmYU1Qw
+
+{
+  "name": "JBL Charger 5",
+  "description": "Consectetur sapiente amet a suscipit iure aperiam minima obcaecati quas unde quia, itaque quam dignissimos assumenda ipsa aspernatur culpa omnis debitis, officia illum rerum reprehenderit beatae, aut eos facere ducimus eius quasi provident aliquid, nihil perferendis adipisci eius vero molestiae laboriosam blanditiis tempora alias amet placeat. Assumenda possimus porro quasi commodi dicta voluptatum minus odio iste aut nobis, ut doloribus ad reprehenderit in doloremque accusantium voluptates possimus sapiente ullam nam, architecto fugit facilis officia suscipit sit, maiores sit consequuntur maxime unde illo officia, asperiores voluptate accusamus facere beatae. Corporis maiores consequatur, facere enim voluptas veniam perferendis dolorum qui delectus id commodi, ad quasi exercitationem, illum autem beatae, optio beatae consequuntur amet similique adipisci aliquid veritatis enim quae error. Ipsum doloremque odio accusamus nam nostrum, delectus id harum quos esse quo nisi?",
+  "price": "12.99",
+  "stock": 4
+}
+
+###
 POST http://localhost:8000/products/ HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2NDgxNzMyLCJpYXQiOjE3NDY0ODE0MzIsImp0aSI6Ijc1MTE4MDM4OWE0YjQ1OGM4NmNlYjFmODcwOGQzNDA4IiwidXNlcl9pZCI6MX0.-tm_V-cbeRVGsmSYOjxAyCps_beKRuiqt4RAwUU4gGs
