@@ -1,6 +1,5 @@
 from django.db.models.aggregates import Max
-
-from api.filter import ProductFilter
+from api.filter import ProductFilter, InStockFilterBackend
 from api.serializers import ProductSerializer, OrderSerializer, OrderItemSerializer, ProductInfoSerializer
 from rest_framework.response import Response
 
@@ -12,13 +11,25 @@ from rest_framework.permissions import (
     AllowAny
 )
 from rest_framework.views import APIView
-
+from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     # filter.(stock__gt=0)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
     filterset_class = ProductFilter
+
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+        InStockFilterBackend
+    ]
+
+    # =name search an exact match of the word
+    search_fields = ["name","description"]
+    ordering_fields = ["name","price","stock"]
 
     def get_permissions(self):
         self.permission_classes = [AllowAny]
