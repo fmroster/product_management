@@ -1,5 +1,5 @@
 from django.contrib import admin
-from api.models import Order, OrderItem
+from api.models import Order, OrderItem, Product
 from api.models import User
 # Register your models here.
 
@@ -13,3 +13,4 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(User)
+admin.site.register(Product)

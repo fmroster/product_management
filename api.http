@@ -53,3 +53,65 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 GET http://localhost:8000/users-orders/ HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2NDgxNzMyLCJpYXQiOjE3NDY0ODE0MzIsImp0aSI6Ijc1MTE4MDM4OWE0YjQ1OGM4NmNlYjFmODcwOGQzNDA4IiwidXNlcl9pZCI6MX0.-tm_V-cbeRVGsmSYOjxAyCps_beKRuiqt4RAwUU4gGs
+
+
+
+###
+GET http://localhost:8000/orders/46f466e6-2eb9-4744-89f5-7479138033c7/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MjU5NTU1LCJpYXQiOjE3NDcyNTkyNTUsImp0aSI6IjZjYzFlYTllNmViYzQ0NDVhMzFkNjA1MjRkMjg3YmI4IiwidXNlcl9pZCI6MX0.7PjeSyuWHNQTVZ6rm9RXHagnBfUp_Nx8CCCdobR7Av0
+
+
+
+
+###
+POST http://localhost:8000/orders/  HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MjUyNDYwLCJpYXQiOjE3NDcyNTIxNjAsImp0aSI6ImJjMDM1MGFlNzBhOTQ5MGRiOGE4ZjI5YWVmOWZlZGRjIiwidXNlcl9pZCI6MX0.eydj0SArrFaeKizpBta8z3Y5YFJZpOagtmaw6xLn3Tg
+
+{
+  "status": "Confirmed",
+  "items": [
+    {
+      "product": 4,
+      "quantity": 2
+    },
+    {
+      "product": 4,
+      "quantity": 1
+    }
+  ]
+}
+
+
+
+
+
+###
+PUT http://localhost:8000/orders/46f466e6-2eb9-4744-89f5-7479138033c7/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MjU5MzUwLCJpYXQiOjE3NDcyNTkwNTAsImp0aSI6IjQ2ZDYzNGI1NjAwYTQzYmE4NDI2MjZmZTI1YjE0NTI1IiwidXNlcl9pZCI6MX0.dNWrmlVbMVJgtaODkpHSdYrYrFng3HC6jpXUvtaSjic
+
+
+{
+  "status": "Pending",
+  "items": [
+    {
+      "product": 2,
+      "quantity": 2
+    },
+    {
+      "product": 2,
+      "quantity": 9
+    }
+  ]
+}
+
+###
+
+DELETE http://localhost:8000/orders/46f466e6-2eb9-4744-89f5-7479138033c7/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MjU5MzUwLCJpYXQiOjE3NDcyNTkwNTAsImp0aSI6IjQ2ZDYzNGI1NjAwYTQzYmE4NDI2MjZmZTI1YjE0NTI1IiwidXNlcl9pZCI6MX0.dNWrmlVbMVJgtaODkpHSdYrYrFng3HC6jpXUvtaSjic
+
+
+
