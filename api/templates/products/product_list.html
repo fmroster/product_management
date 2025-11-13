@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Available Products</h1>
+
+        {% if products %}
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            {% if product.external_image_url %}
+                                <img src="{{ product.external_image_url }}" class="card-img-top"
+                                     alt="{{ product.name }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/400x300?text=No+Image" class="card-img-top"
+                                     alt="{{ product.name }}">
+                            {% endif %}
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text text-muted">{{ product.description|truncatechars:100 }}</p>
+                                <p class="fw-bold">Price: <span class="text-success">{{ product.price }} Pula</span></p>
+                                <p>
+                                    {% if product.in_stock %}
+                                        <span class="badge bg-success">In Stock ({{ product.stock }})</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Out of Stock</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a href="{% url 'product_detail' product.id %}" class="btn btn-primary btn-sm">View
+                                    Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                No products available at the moment.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

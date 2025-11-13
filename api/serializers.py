@@ -21,6 +21,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'description',
             'price',
             'stock',
+            'external_image_url',
         )
 
     def validate_price(self, value):

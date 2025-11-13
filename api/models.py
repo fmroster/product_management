@@ -3,6 +3,7 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 # Create your models here.
 class User(AbstractUser):
     pass
@@ -14,6 +15,7 @@ class Product(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=10)
     stock = models.PositiveIntegerField()
     image = models.ImageField(upload_to='products/', null=True, blank=True)
+    external_image_url = models.URLField(null=True, blank=True)
 
     objects = models.Manager()
 
@@ -39,8 +41,7 @@ class Order(models.Model):
         choices=StatusChoices.choices,
         default=StatusChoices.PENDING
     )
-    products = models.ManyToManyField(Product, through= 'OrderItem', related_name='orders')
-
+    products = models.ManyToManyField(Product, through='OrderItem', related_name='orders')
 
     def __str__(self):
         return f'Order {self.order_id} by {self.user.username}'
@@ -50,7 +51,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,
-        related_name='items', # should match the serializer nested variable
+        related_name='items',  # should match the serializer nested variable
     )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()

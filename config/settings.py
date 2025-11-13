@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure--s+9^x!iboa!n^p(9s=j)6*mc2&+ae==ekh4r7-k()qm$st4y('
 
+MEDIA_URL = '/products/'
+MEDIA_ROOT = BASE_DIR / 'products'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,7 +47,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,9 +127,9 @@ REST_FRAMEWORK = {
  
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '2/minute',
-        'products': '3/minute',
-        'orders': '3/minute',
+        'anon': '20/minute',
+        # 'products': '3/minute',
+        # 'orders': '3/minute',
     }
 }
 

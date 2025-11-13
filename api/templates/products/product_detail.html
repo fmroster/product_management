@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p><strong>Price:</strong> {{ product.price }} Pula</p>
+                <p>
+                    {% if product.in_stock %}
+                        <span class="badge bg-success">In Stock ({{ product.stock }})</span>
+                    {% else %}
+                        <span class="badge bg-danger">Out of Stock</span>
+                    {% endif %}
+                </p>
+                <a href="{% url 'product_list' %}" class="btn btn-secondary">Back to Products</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
